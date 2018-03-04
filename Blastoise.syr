@@ -1,0 +1,619 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Reading design: Blastoise.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Blastoise.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Blastoise"
+Output Format                      : NGC
+Target Device                      : xc3s100e-4-cp132
+
+---- Source Options
+Top Module Name                    : Blastoise
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "Trans.v" in library work
+Compiling verilog file "Recibir.v" in library work
+Module <Trans> compiled
+Compiling verilog file "Mux2.v" in library work
+Module <Recibir> compiled
+Compiling verilog file "mux.v" in library work
+Module <Mux2> compiled
+Compiling verilog file "gtv.v" in library work
+Module <mux> compiled
+Compiling verilog file "Flag.v" in library work
+Module <gtv> compiled
+Compiling verilog file "decoder.v" in library work
+Module <Flag> compiled
+Compiling verilog file "clk.v" in library work
+Module <decoder> compiled
+Compiling verilog file "Blastoise.v" in library work
+Module <clkredu> compiled
+Module <Blastoise> compiled
+No errors in compilation
+Analysis of file <"Blastoise.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <Blastoise> in library <work>.
+
+Analyzing hierarchy for module <clkredu> in library <work>.
+
+Analyzing hierarchy for module <Recibir> in library <work>.
+
+Analyzing hierarchy for module <Flag> in library <work>.
+
+Analyzing hierarchy for module <Mux2> in library <work>.
+
+Analyzing hierarchy for module <Trans> in library <work>.
+
+Analyzing hierarchy for module <decoder> in library <work>.
+
+Analyzing hierarchy for module <gtv> in library <work>.
+
+Analyzing hierarchy for module <mux> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <Blastoise>.
+Module <Blastoise> is correct for synthesis.
+ 
+Analyzing module <clkredu> in library <work>.
+Module <clkredu> is correct for synthesis.
+ 
+Analyzing module <Recibir> in library <work>.
+Module <Recibir> is correct for synthesis.
+ 
+Analyzing module <Flag> in library <work>.
+Module <Flag> is correct for synthesis.
+ 
+Analyzing module <Mux2> in library <work>.
+Module <Mux2> is correct for synthesis.
+ 
+Analyzing module <Trans> in library <work>.
+Module <Trans> is correct for synthesis.
+ 
+Analyzing module <decoder> in library <work>.
+Module <decoder> is correct for synthesis.
+ 
+Analyzing module <gtv> in library <work>.
+Module <gtv> is correct for synthesis.
+ 
+Analyzing module <mux> in library <work>.
+Module <mux> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <clkredu>.
+    Related source file is "clk.v".
+    Found T flip-flop for signal <salida>.
+    Found 26-bit up counter for signal <conteo>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 T-type flip-flop(s).
+Unit <clkredu> synthesized.
+
+
+Synthesizing Unit <Recibir>.
+    Related source file is "Recibir.v".
+    Found finite state machine <FSM_0> for signal <estado>.
+    -----------------------------------------------------------------------
+    | States             | 11                                             |
+    | Transitions        | 12                                             |
+    | Inputs             | 1                                              |
+    | Outputs            | 8                                              |
+    | Clock              | outclk                    (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit register for signal <SalidaRx>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   8 D-type flip-flop(s).
+Unit <Recibir> synthesized.
+
+
+Synthesizing Unit <Flag>.
+    Related source file is "Flag.v".
+    Found 1-bit register for signal <bandera>.
+    Found 2-bit comparator equal for signal <bandera$cmp_eq0000> created at line 34.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <Flag> synthesized.
+
+
+Synthesizing Unit <Mux2>.
+    Related source file is "Mux2.v".
+Unit <Mux2> synthesized.
+
+
+Synthesizing Unit <Trans>.
+    Related source file is "Trans.v".
+    Found 1-bit register for signal <salidaTx>.
+    Found 6-bit register for signal <estado>.
+    Found 6-bit adder for signal <estado$addsub0000> created at line 91.
+    Summary:
+	inferred   7 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <Trans> synthesized.
+
+
+Synthesizing Unit <decoder>.
+    Related source file is "decoder.v".
+    Found 4x7-bit ROM for signal <Yo>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <decoder> synthesized.
+
+
+Synthesizing Unit <gtv>.
+    Related source file is "gtv.v".
+    Found 2-bit up counter for signal <sel>.
+    Found 26-bit up counter for signal <conteo>.
+    Summary:
+	inferred   2 Counter(s).
+Unit <gtv> synthesized.
+
+
+Synthesizing Unit <mux>.
+    Related source file is "mux.v".
+    Found 4x4-bit ROM for signal <trans>.
+    Found 7-bit 4-to-1 multiplexer for signal <salida>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   7 Multiplexer(s).
+Unit <mux> synthesized.
+
+
+Synthesizing Unit <Blastoise>.
+    Related source file is "Blastoise.v".
+Unit <Blastoise> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 2
+ 4x4-bit ROM                                           : 1
+ 4x7-bit ROM                                           : 1
+# Adders/Subtractors                                   : 1
+ 6-bit adder                                           : 1
+# Counters                                             : 3
+ 2-bit up counter                                      : 1
+ 26-bit up counter                                     : 2
+# Registers                                            : 11
+ 1-bit register                                        : 10
+ 6-bit register                                        : 1
+# Toggle Registers                                     : 1
+ T flip-flop                                           : 1
+# Comparators                                          : 1
+ 2-bit comparator equal                                : 1
+# Multiplexers                                         : 1
+ 7-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <Recibir/estado/FSM> on signal <estado[1:11]> with one-hot encoding.
+----------------------
+ State | Encoding
+----------------------
+ 0000  | 00000000001
+ 0001  | 00000000010
+ 0010  | 00000000100
+ 0011  | 00000001000
+ 0100  | 00000010000
+ 0101  | 00000100000
+ 0110  | 00001000000
+ 0111  | 00010000000
+ 1000  | 00100000000
+ 1001  | 01000000000
+ 1010  | 10000000000
+----------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# ROMs                                                 : 2
+ 4x4-bit ROM                                           : 1
+ 4x7-bit ROM                                           : 1
+# Adders/Subtractors                                   : 1
+ 6-bit adder                                           : 1
+# Counters                                             : 3
+ 2-bit up counter                                      : 1
+ 26-bit up counter                                     : 2
+# Registers                                            : 17
+ Flip-Flops                                            : 17
+# Comparators                                          : 1
+ 2-bit comparator equal                                : 1
+# Multiplexers                                         : 1
+ 7-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <Blastoise> ...
+
+Optimizing unit <Recibir> ...
+
+Optimizing unit <Trans> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Blastoise, actual ratio is 7.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Blastoise.ngr
+Top Level Output File Name         : Blastoise
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 24
+
+Cell Usage :
+# BELS                             : 254
+#      GND                         : 1
+#      INV                         : 4
+#      LUT1                        : 50
+#      LUT2                        : 17
+#      LUT2_L                      : 1
+#      LUT3                        : 13
+#      LUT4                        : 38
+#      LUT4_L                      : 4
+#      MUXCY                       : 64
+#      MUXF5                       : 9
+#      VCC                         : 1
+#      XORCY                       : 52
+# FlipFlops/Latches                : 82
+#      FDC                         : 7
+#      FDE                         : 3
+#      FDP                         : 1
+#      FDR                         : 62
+#      FDRE                        : 8
+#      FDS                         : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 23
+#      IBUF                        : 11
+#      OBUF                        : 12
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-4 
+
+ Number of Slices:                       67  out of    960     6%  
+ Number of Slice Flip Flops:             82  out of   1920     4%  
+ Number of 4 input LUTs:                127  out of   1920     6%  
+ Number of IOs:                          24
+ Number of bonded IOBs:                  24  out of     83    28%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+baudGen/salida_01                  | BUFG                   | 27    |
+clk                                | BUFGP                  | 55    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 8     |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.599ns (Maximum Frequency: 151.538MHz)
+   Minimum input arrival time before clock: 6.421ns
+   Maximum output required time after clock: 7.764ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'baudGen/salida_01'
+  Clock period: 6.599ns (frequency: 151.538MHz)
+  Total number of paths / destination ports: 90 / 27
+-------------------------------------------------------------------------
+Delay:               6.599ns (Levels of Logic = 5)
+  Source:            Bandereador/bandera (FF)
+  Destination:       Transmitir/salidaTx (FF)
+  Source Clock:      baudGen/salida_01 rising
+  Destination Clock: baudGen/salida_01 rising
+
+  Data Path: Bandereador/bandera to Transmitir/salidaTx
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             19   0.591   1.260  Bandereador/bandera (Bandereador/bandera)
+     LUT3:I0->O            1   0.704   0.000  Transmitir/salidaTx_mux0000156_F (N24)
+     MUXF5:I0->O           1   0.321   0.424  Transmitir/salidaTx_mux0000156 (Transmitir/salidaTx_mux0000156)
+     LUT4:I3->O            1   0.704   0.455  Transmitir/salidaTx_mux0000184 (Transmitir/salidaTx_mux0000184)
+     LUT4:I2->O            1   0.704   0.424  Transmitir/salidaTx_mux0000318 (Transmitir/salidaTx_mux0000318)
+     LUT4:I3->O            1   0.704   0.000  Transmitir/salidaTx_mux0000361 (Transmitir/salidaTx_mux0000)
+     FDP:D                     0.308          Transmitir/salidaTx
+    ----------------------------------------
+    Total                      6.599ns (4.036ns logic, 2.563ns route)
+                                       (61.2% logic, 38.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.179ns (frequency: 193.089MHz)
+  Total number of paths / destination ports: 2136 / 110
+-------------------------------------------------------------------------
+Delay:               5.179ns (Levels of Logic = 8)
+  Source:            gtv/conteo_5 (FF)
+  Destination:       gtv/conteo_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: gtv/conteo_5 to gtv/conteo_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.622  gtv/conteo_5 (gtv/conteo_5)
+     LUT2:I0->O            1   0.704   0.000  gtv/conteo_cmp_eq0000_wg_lut<0> (gtv/conteo_cmp_eq0000_wg_lut<0>)
+     MUXCY:S->O            1   0.464   0.000  gtv/conteo_cmp_eq0000_wg_cy<0> (gtv/conteo_cmp_eq0000_wg_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  gtv/conteo_cmp_eq0000_wg_cy<1> (gtv/conteo_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  gtv/conteo_cmp_eq0000_wg_cy<2> (gtv/conteo_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  gtv/conteo_cmp_eq0000_wg_cy<3> (gtv/conteo_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  gtv/conteo_cmp_eq0000_wg_cy<4> (gtv/conteo_cmp_eq0000_wg_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  gtv/conteo_cmp_eq0000_wg_cy<5> (gtv/conteo_cmp_eq0000_wg_cy<5>)
+     MUXCY:CI->O          28   0.331   1.261  gtv/conteo_cmp_eq0000_wg_cy<6> (gtv/conteo_cmp_eq0000)
+     FDR:R                     0.911          gtv/conteo_0
+    ----------------------------------------
+    Total                      5.179ns (3.296ns logic, 1.883ns route)
+                                       (63.6% logic, 36.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'baudGen/salida_01'
+  Total number of paths / destination ports: 41 / 32
+-------------------------------------------------------------------------
+Offset:              6.421ns (Levels of Logic = 6)
+  Source:            in<0> (PAD)
+  Destination:       Transmitir/salidaTx (FF)
+  Destination Clock: baudGen/salida_01 rising
+
+  Data Path: in<0> to Transmitir/salidaTx
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.218   0.455  in_0_IBUF (in_0_IBUF)
+     LUT3:I2->O            1   0.704   0.000  Transmitir/salidaTx_mux0000156_F (N24)
+     MUXF5:I0->O           1   0.321   0.424  Transmitir/salidaTx_mux0000156 (Transmitir/salidaTx_mux0000156)
+     LUT4:I3->O            1   0.704   0.455  Transmitir/salidaTx_mux0000184 (Transmitir/salidaTx_mux0000184)
+     LUT4:I2->O            1   0.704   0.424  Transmitir/salidaTx_mux0000318 (Transmitir/salidaTx_mux0000318)
+     LUT4:I3->O            1   0.704   0.000  Transmitir/salidaTx_mux0000361 (Transmitir/salidaTx_mux0000)
+     FDP:D                     0.308          Transmitir/salidaTx
+    ----------------------------------------
+    Total                      6.421ns (4.663ns logic, 1.758ns route)
+                                       (72.6% logic, 27.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'baudGen/salida_01'
+  Total number of paths / destination ports: 59 / 8
+-------------------------------------------------------------------------
+Offset:              7.764ns (Levels of Logic = 5)
+  Source:            Recibir/SalidaRx_1 (FF)
+  Destination:       segments<4> (PAD)
+  Source Clock:      baudGen/salida_01 rising
+
+  Data Path: Recibir/SalidaRx_1 to segments<4>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             8   0.591   0.932  Recibir/SalidaRx_1 (Recibir/SalidaRx_1)
+     LUT4:I0->O            1   0.704   0.000  segments<4>115_SW02 (segments<4>115_SW01)
+     MUXF5:I0->O           1   0.321   0.499  segments<4>115_SW0_f5 (N16)
+     LUT2:I1->O            1   0.704   0.000  segments<4>1152 (segments<4>1151)
+     MUXF5:I0->O           1   0.321   0.420  segments<4>115_f5 (segments_4_OBUF)
+     OBUF:I->O                 3.272          segments_4_OBUF (segments<4>)
+    ----------------------------------------
+    Total                      7.764ns (5.913ns logic, 1.851ns route)
+                                       (76.2% logic, 23.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 32 / 10
+-------------------------------------------------------------------------
+Offset:              7.655ns (Levels of Logic = 4)
+  Source:            gtv/sel_1 (FF)
+  Destination:       segments<0> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: gtv/sel_1 to segments<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             15   0.591   1.192  gtv/sel_1 (gtv/sel_1)
+     LUT3:I0->O            2   0.704   0.451  mux1/Mmux_salida268 (mux1/Mmux_salida268)
+     LUT4:I3->O            1   0.704   0.000  mux1/Mmux_salida21081 (mux1/Mmux_salida2108)
+     MUXF5:I1->O           1   0.321   0.420  mux1/Mmux_salida2108_f5 (segments_0_OBUF)
+     OBUF:I->O                 3.272          segments_0_OBUF (segments<0>)
+    ----------------------------------------
+    Total                      7.655ns (5.592ns logic, 2.063ns route)
+                                       (73.1% logic, 26.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.91 secs
+ 
+--> 
+
+Total memory usage is 197160 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

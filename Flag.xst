@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Fernando/Downloads/Blastoise/Blastoise/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Fernando/Downloads/Blastoise/Blastoise/xst"
+elaborate
+-ifn Flag.prj
+-ifmt mixed
